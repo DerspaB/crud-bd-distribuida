@@ -35,7 +35,7 @@ export const Navbar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" >
       <Container maxWidth="xl" style={{ gap: "20px" }}>
         <Toolbar disableGutters>
           <Typography
@@ -76,12 +76,12 @@ export const Navbar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <NavLink to="/personas" style={{ textDecoration: "none" }}>
+              <NavLink to="/personas" style={{ textDecoration: "none",  color: 'black' }}>
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">Personas</Typography>
                 </MenuItem>
               </NavLink>
-              <NavLink to="/productos" style={{ textDecoration: "none" }}>
+              <NavLink to="/productos" style={{ textDecoration: "none", color: 'black' }}>
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">Productos</Typography>
                 </MenuItem>
