@@ -46,7 +46,7 @@ export function PersonaGrid() {
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Nombre</StyledTableCell>
+              <StyledTableCell align="center">Nombre</StyledTableCell>
               <StyledTableCell align="center">Apellido</StyledTableCell>
               <StyledTableCell align="center">Email</StyledTableCell>
               <StyledTableCell align="center">Telefono</StyledTableCell>
@@ -56,9 +56,7 @@ export function PersonaGrid() {
           <TableBody>
             {rows.map((row) => (
               <StyledTableRow key={row.id}>
-                <StyledTableCell component="th" scope="row">
-                  {row.nombre}
-                </StyledTableCell>
+                <StyledTableCell align="center">{row.nombre}</StyledTableCell>
                 <StyledTableCell align="center">{row.apellido}</StyledTableCell>
                 <StyledTableCell align="center">{row.email}</StyledTableCell>
                 <StyledTableCell align="center">{row.telefono}</StyledTableCell>

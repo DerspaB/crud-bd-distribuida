@@ -24,7 +24,7 @@ const style = {
 export function UsuarioModal() {
     const { state } = useUsuario()
     const { usuarioCurrent, isModalOpen } = state
-    const { handleOpenModal, handleChangePersona } = UsuarioBusiness()
+    const { handleOpenModal, handleChangeUsuario } = UsuarioBusiness()
 
     return (
         <Modal
@@ -41,7 +41,7 @@ export function UsuarioModal() {
                         <TextField
                             name='idPerson'
                             value={usuarioCurrent.idPerson}
-                            onChange={handleChangePersona}
+                            onChange={handleChangeUsuario}
                             fullWidth
                             label="ID Persona"
                             variant="outlined"
@@ -52,7 +52,7 @@ export function UsuarioModal() {
                         <TextField
                             name='nickname'
                             value={usuarioCurrent.nickname}
-                            onChange={handleChangePersona}
+                            onChange={handleChangeUsuario}
                             fullWidth
                             label="Nickname"
                             variant="outlined"
@@ -63,7 +63,7 @@ export function UsuarioModal() {
                         <TextField
                             name='password'
                             value={usuarioCurrent.password}
-                            onChange={handleChangePersona}
+                            onChange={handleChangeUsuario}
                             fullWidth
                             label="Password"
                             variant="outlined"
@@ -76,7 +76,7 @@ export function UsuarioModal() {
                             <Select
                                 name='status'
                                 label="Status"
-                                onChange={handleChangePersona}
+                                onChange={handleChangeUsuario}
                                 value={usuarioCurrent.status}
                                 InputLabelProps={{ shrink: true }}
                             >

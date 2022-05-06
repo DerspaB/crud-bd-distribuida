@@ -30,10 +30,10 @@ export const UsuarioBusiness = () => {
     handleOpenModal(true);
   };
 
-  const handleChangeProducto = (e) => {
+  const handleChangeUsuario = (e) => {
     dispatch(
       setUsuarioCurrent({
-        ...state.personaCurrent,
+        ...state.usuarioCurrent,
         [e.target.name]: e.target.value,
       })
     );
@@ -41,7 +41,7 @@ export const UsuarioBusiness = () => {
 
   return {
     handleOpenModal,
-    handleChangePersona: handleChangeProducto,
+    handleChangeUsuario,
     handleCreateOpenModal,
     handleSetProductoCurrent,
     openEdit,

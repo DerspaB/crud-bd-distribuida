@@ -24,7 +24,7 @@ const style = {
 export function ProductoModal() {
     const { state } = useProducto()
     const { productoCurrent, isModalOpen } = state
-    const { handleOpenModal, handleChangePersona } = ProductoBusiness()
+    const { handleOpenModal, handleChangeProducto } = ProductoBusiness()
 
     return (
         <Modal
@@ -41,7 +41,7 @@ export function ProductoModal() {
                         <TextField
                             name='nombreProducto'
                             value={productoCurrent.nombreProducto}
-                            onChange={handleChangePersona}
+                            onChange={handleChangeProducto}
                             fullWidth
                             label="Nombre Producto"
                             variant="outlined"
@@ -51,7 +51,7 @@ export function ProductoModal() {
                         <TextField
                             name='precio'
                             value={productoCurrent.precio}
-                            onChange={handleChangePersona}
+                            onChange={handleChangeProducto}
                             fullWidth
                             label="Precio"
                             variant="outlined"
@@ -61,7 +61,7 @@ export function ProductoModal() {
                         <TextField
                             name='categoria'
                             value={productoCurrent.categoria}
-                            onChange={handleChangePersona}
+                            onChange={handleChangeProducto}
                             fullWidth
                             label="Categoria"
                             variant="outlined"

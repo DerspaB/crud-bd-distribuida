@@ -32,7 +32,7 @@ export const ProductoBusiness = () => {
   const handleChangeProducto = (e) => {
     dispatch(
       setProductoCurrent({
-        ...state.personaCurrent,
+        ...state.productoCurrent,
         [e.target.name]: e.target.value,
       })
     );
@@ -40,7 +40,7 @@ export const ProductoBusiness = () => {
 
   return {
     handleOpenModal,
-    handleChangePersona: handleChangeProducto,
+    handleChangeProducto,
     handleCreateOpenModal,
     handleSetProductoCurrent,
     openEdit,
