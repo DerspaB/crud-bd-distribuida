@@ -1,10 +1,16 @@
-export const personaInitialState = {
+export const usuarioInitialState = {
   isModalOpen: false,
   isDeleteModal: false,
-  personaCurrent: { id: "", nombre: "", apellido: "", email: "", telefono: "" },
+  usuarioCurrent: {
+    id: "",
+    idPerson: "",
+    nickname: "",
+    password: "",
+    status: false,
+  },
 };
 
-export const personaReducer = (state, action) => {
+export const usuarioReducer = (state, action) => {
   switch (action.type) {
     case "setOpenModal":
       return {
@@ -16,10 +22,10 @@ export const personaReducer = (state, action) => {
         ...state,
         isDeleteModal: action.payload,
       };
-    case "setPersonaCurrent":
+    case "setUsuarioCurrent":
       return {
         ...state,
-        personaCurrent: action.payload,
+        usuarioCurrent: action.payload,
       };
     default:
       return state;

@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "../components/navbar/Navbar";
-import { ProductosScreen } from "../components/producto/ProductosScreen";
 import { PersonasPage } from "../components/persona/PersonasPage";
+import { ProductoPage } from "../components/producto/ProductoPage";
+import { UsuarioPage } from "../components/usuario/UsuarioPage";
 
 export const AppRouter = () => {
   return (
@@ -11,7 +12,8 @@ export const AppRouter = () => {
       <Routes>
         <Route path="/" element={<PersonasPage />} />
         <Route path="/personas" element={<PersonasPage />} />
-        <Route path="/productos" element={<ProductosScreen />} />
+        <Route path="/productos" element={<ProductoPage />} />
+        <Route path="/usuarios" element={<UsuarioPage />} />
       </Routes>
     </BrowserRouter>
   );

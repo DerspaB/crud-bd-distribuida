@@ -1,18 +1,18 @@
 import { Container } from "@mui/material";
 import React from "react";
-import { PersonaProvider } from "./provider/PersonaProvider";
+import { UsuarioProvider } from "./provider/UsuarioProvider";
 import { DeleteModal } from "./screens/grid/DeleteModal";
-import { PersonaGrid } from "./screens/grid/PersonaGrid";
-import { PersonaModal } from "./screens/grid/PersonaModal";
+import { UsuarioGrid } from "./screens/grid/UsuarioGrid";
+import { UsuarioModal } from "./screens/grid/UsuarioModal";
 
-export const PersonasPage = () => {
+export const UsuarioPage = () => {
   return (
-    <PersonaProvider>
+    <UsuarioProvider>
       <Container maxWidth="md" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '40px' }}>
-        <PersonaGrid />
-        <PersonaModal />
+        <UsuarioGrid />
+        <UsuarioModal />
         <DeleteModal />
       </Container>
-    </PersonaProvider>
+    </UsuarioProvider>
   )
 };

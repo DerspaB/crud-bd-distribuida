@@ -1,13 +1,13 @@
-export const personaAction = () => {
+export const usuarioAction = () => {
   const setOpenModal = (value) => ({ type: "setOpenModal", payload: value });
   const setDeleteModal = (value) => ({
     type: "setDeleteModal",
     payload: value,
   });
-  const setPersonaCurrent = (value) => ({
-    type: "setPersonaCurrent",
+  const setUsuarioCurrent = (value) => ({
+    type: "setUsuarioCurrent",
     payload: value,
   });
 
-  return { setOpenModal, setPersonaCurrent, setDeleteModal };
+  return { setOpenModal, setUsuarioCurrent, setDeleteModal };
 };

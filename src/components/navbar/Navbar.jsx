@@ -76,7 +76,7 @@ export const Navbar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <NavLink to="/personas" style={{ textDecoration: "none",  color: 'black' }}>
+              <NavLink to="/personas" style={{ textDecoration: "none", color: 'black' }}>
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">Personas</Typography>
                 </MenuItem>
@@ -84,6 +84,11 @@ export const Navbar = () => {
               <NavLink to="/productos" style={{ textDecoration: "none", color: 'black' }}>
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">Productos</Typography>
+                </MenuItem>
+              </NavLink>
+              <NavLink to="/usuarios" style={{ textDecoration: "none", color: 'black' }}>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Usuarios</Typography>
                 </MenuItem>
               </NavLink>
             </Menu>
@@ -117,6 +122,17 @@ export const Navbar = () => {
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 Productos
+              </Button>
+            </NavLink>
+            <NavLink
+              to="/usuarios"
+              style={{ textDecoration: "none", marginLeft: "20px" }}
+            >
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Usuarios
               </Button>
             </NavLink>
           </Box>

@@ -1,10 +1,10 @@
-export const personaInitialState = {
+export const productoInitialState = {
   isModalOpen: false,
   isDeleteModal: false,
-  personaCurrent: { id: "", nombre: "", apellido: "", email: "", telefono: "" },
+  productoCurrent: { id: "", nombreProducto: "", categoria: "", precio: "" },
 };
 
-export const personaReducer = (state, action) => {
+export const productoReducer = (state, action) => {
   switch (action.type) {
     case "setOpenModal":
       return {
@@ -16,10 +16,10 @@ export const personaReducer = (state, action) => {
         ...state,
         isDeleteModal: action.payload,
       };
-    case "setPersonaCurrent":
+    case "setProductoCurrent":
       return {
         ...state,
-        personaCurrent: action.payload,
+        productoCurrent: action.payload,
       };
     default:
       return state;

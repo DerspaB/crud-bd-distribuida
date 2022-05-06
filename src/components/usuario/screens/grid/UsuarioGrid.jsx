@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, IconButton } from '@mui/material';
-import { PersonaBusiness } from '../../actions/personaBusiness';
+import { UsuarioBusiness } from '../../actions/usuarioBusiness';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -34,11 +34,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 const rows = [
-  { id: "1", nombre: 'Jorge', apellido: 'Parrado', email: 'jparrado@uniempresarial.edu.co', telefono: '3185253303' }
+  { id: "1", idPerson: '1', nickname: 'DerspaB', password: '1234567', status: true }
 ];
 
-export function PersonaGrid() {
-  const { handleCreateOpenModal, openEdit, handleDeleteModal } = PersonaBusiness()
+export function UsuarioGrid() {
+  const { handleCreateOpenModal, openEdit, handleDeleteModal } = UsuarioBusiness()
   return (
     <div>
       <Button onClick={handleCreateOpenModal} variant="contained" style={{ background: '#3dbc07', marginBottom: '0px', zIndex: '0' }}>Crear</Button>
@@ -46,22 +46,22 @@ export function PersonaGrid() {
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Nombre</StyledTableCell>
-              <StyledTableCell align="center">Apellido</StyledTableCell>
-              <StyledTableCell align="center">Email</StyledTableCell>
-              <StyledTableCell align="center">Telefono</StyledTableCell>
+              <StyledTableCell align="center">ID Persona</StyledTableCell>
+              <StyledTableCell align="center">Nickname</StyledTableCell>
+              <StyledTableCell align="center">Password</StyledTableCell>
+              <StyledTableCell align="center">Status</StyledTableCell>
               <StyledTableCell align="center">Acciones</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <StyledTableRow key={row.id}>
-                <StyledTableCell component="th" scope="row">
-                  {row.nombre}
+            {rows.map((row, index) => (
+              <StyledTableRow key={index}>
+                <StyledTableCell align='center'>
+                  {row.idPerson}
                 </StyledTableCell>
-                <StyledTableCell align="center">{row.apellido}</StyledTableCell>
-                <StyledTableCell align="center">{row.email}</StyledTableCell>
-                <StyledTableCell align="center">{row.telefono}</StyledTableCell>
+                <StyledTableCell align="center">{row.nickname}</StyledTableCell>
+                <StyledTableCell align="center">{row.password}</StyledTableCell>
+                <StyledTableCell align="center">{row.status ? 'Activo' : 'Inactivo'}</StyledTableCell>
                 <StyledTableCell align="center">
                   <IconButton onClick={() => openEdit(row)} style={{ color: 'black' }} >
                     <EditIcon />
