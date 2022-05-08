@@ -1,20 +1,20 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { Button, IconButton } from '@mui/material';
-import { UsuarioBusiness } from '../../actions/usuarioBusiness';
+import * as React from "react";
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { Button, IconButton } from "@mui/material";
+import { UsuarioBusiness } from "../../actions/usuarioBusiness";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#4aabe2',
+    backgroundColor: "#4aabe2",
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -23,25 +23,31 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
+  "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
   // hide last border
-  '&:last-child td, &:last-child th': {
+  "&:last-child td, &:last-child th": {
     border: 0,
   },
 }));
 
-
-const rows = [
-  { id: "1", idPerson: '1', nickname: 'DerspaB', password: '1234567', status: true }
-];
-
-export function UsuarioGrid() {
-  const { handleCreateOpenModal, openEdit, handleDeleteModal } = UsuarioBusiness()
+export function UsuarioGrid({ rows }) {
+  const {
+    handleCreateOpenModal,
+    openEdit,
+    handleDeleteModal,
+    handleClickDelete,
+  } = UsuarioBusiness();
   return (
     <div>
-      <Button onClick={handleCreateOpenModal} variant="contained" style={{ background: '#3dbc07', marginBottom: '0px', zIndex: '0' }}>Crear</Button>
+      <Button
+        onClick={handleCreateOpenModal}
+        variant="contained"
+        style={{ background: "#3dbc07", marginBottom: "0px", zIndex: "0" }}
+      >
+        Crear
+      </Button>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
@@ -56,17 +62,27 @@ export function UsuarioGrid() {
           <TableBody>
             {rows.map((row, index) => (
               <StyledTableRow key={index}>
-                <StyledTableCell align='center'>
-                  {row.idPerson}
-                </StyledTableCell>
+                <StyledTableCell align="center">{row.idPerson}</StyledTableCell>
                 <StyledTableCell align="center">{row.nickname}</StyledTableCell>
-                <StyledTableCell align="center">{row.password}</StyledTableCell>
-                <StyledTableCell align="center">{row.status ? 'Activo' : 'Inactivo'}</StyledTableCell>
                 <StyledTableCell align="center">
-                  <IconButton onClick={() => openEdit(row)} style={{ color: 'black' }} >
+                  {String(row.password).length > 10
+                    ? String(row.password).slice(20, -2)
+                    : row.password}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  {row.status ? "Activo" : "Inactivo"}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  <IconButton
+                    onClick={() => openEdit(row)}
+                    style={{ color: "black" }}
+                  >
                     <EditIcon />
                   </IconButton>
-                  <IconButton onClick={() => handleDeleteModal(true)} style={{ color: 'red' }}>
+                  <IconButton
+                    onClick={() => handleClickDelete(row._id)}
+                    style={{ color: "red" }}
+                  >
                     <DeleteIcon />
                   </IconButton>
                 </StyledTableCell>

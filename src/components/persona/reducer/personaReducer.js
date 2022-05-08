@@ -1,7 +1,16 @@
 export const personaInitialState = {
   isModalOpen: false,
   isDeleteModal: false,
-  personaCurrent: { id: "", nombre: "", apellido: "", email: "", telefono: "" },
+  personaCurrent: {
+    id: "",
+    name: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    createdAt: "",
+    updatedAt: "",
+  },
+  rows: [],
 };
 
 export const personaReducer = (state, action) => {
@@ -20,6 +29,11 @@ export const personaReducer = (state, action) => {
       return {
         ...state,
         personaCurrent: action.payload,
+      };
+    case "setRows":
+      return {
+        ...state,
+        rows: action.payload,
       };
     default:
       return state;

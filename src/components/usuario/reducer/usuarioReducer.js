@@ -2,12 +2,13 @@ export const usuarioInitialState = {
   isModalOpen: false,
   isDeleteModal: false,
   usuarioCurrent: {
-    id: "",
+    _id: "",
     idPerson: "",
     nickname: "",
     password: "",
     status: false,
   },
+  rows: [],
 };
 
 export const usuarioReducer = (state, action) => {
@@ -26,6 +27,11 @@ export const usuarioReducer = (state, action) => {
       return {
         ...state,
         usuarioCurrent: action.payload,
+      };
+    case "setRows":
+      return {
+        ...state,
+        rows: action.payload,
       };
     default:
       return state;

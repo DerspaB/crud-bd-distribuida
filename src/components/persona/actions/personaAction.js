@@ -8,6 +8,10 @@ export const personaAction = () => {
     type: "setPersonaCurrent",
     payload: value,
   });
+  const setRows = (value) => ({
+    type: "setRows",
+    payload: value,
+  });
 
-  return { setOpenModal, setPersonaCurrent, setDeleteModal };
+  return { setOpenModal, setPersonaCurrent, setDeleteModal, setRows };
 };
