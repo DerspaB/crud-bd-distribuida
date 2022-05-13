@@ -77,7 +77,7 @@ export function PersonaGrid() {
                     <EditIcon />
                   </IconButton>
                   <IconButton
-                    onClick={() => handleClickDelete(row.id)}
+                    onClick={() => handleClickDelete(row._id)}
                     style={{ color: "red" }}
                   >
                     <DeleteIcon />

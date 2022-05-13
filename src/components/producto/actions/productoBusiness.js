@@ -1,9 +1,11 @@
+import axios from "axios";
 import { useProducto } from "../context/useProducto";
 import { productoAction } from "./productoAction";
 
 export const ProductoBusiness = () => {
   const { state, dispatch } = useProducto();
-  const { setOpenModal, setProductoCurrent, setDeleteModal } = productoAction();
+  const { setOpenModal, setProductoCurrent, setDeleteModal, setRows } =
+    productoAction();
 
   const handleOpenModal = (value) => dispatch(setOpenModal(value));
   const handleDeleteModal = (value) => dispatch(setDeleteModal(value));
@@ -23,6 +25,7 @@ export const ProductoBusiness = () => {
   const handleSetProductoCurrent = (value) => {
     dispatch(setProductoCurrent(value));
   };
+  const handleSetRows = (value) => dispatch(setRows(value));
 
   const openEdit = (producto) => {
     handleSetProductoCurrent(producto);
@@ -38,6 +41,59 @@ export const ProductoBusiness = () => {
     );
   };
 
+  const handleClickDelete = (id) => {
+    dispatch(
+      setProductoCurrent({
+        ...state.productoCurrent,
+        _id: id,
+      })
+    );
+    handleDeleteModal(true);
+  };
+
+  const getProduct = () => {
+    axios
+      .get("http://localhost:8080/api/products")
+      .then((resp) => handleSetRows(resp.data.products))
+      .catch((error) => console.log(error));
+  };
+
+  const createPerson = () => {
+    axios
+      .post("http://localhost:8080/api/products", {
+        nombreProducto: state.productoCurrent.nombreProducto,
+        categoria: state.productoCurrent.categoria,
+        precio: state.productoCurrent.precio,
+      })
+      .then(() => {
+        handleOpenModal(false);
+        getProduct();
+      })
+      .catch(console.log);
+  };
+  const editPerson = () => {
+    axios
+      .put(`http://localhost:8080/api/products/${state.productoCurrent._id}`, {
+        nombreProducto: state.productoCurrent.nombreProducto,
+        categoria: state.productoCurrent.categoria,
+        precio: state.productoCurrent.precio,
+      })
+      .then(() => {
+        handleOpenModal(false);
+        getProduct();
+      })
+      .catch(console.log);
+  };
+  const deletePerson = () => {
+    axios
+      .delete(`http://localhost:8080/api/products/${state.productoCurrent._id}`)
+      .then(() => {
+        handleDeleteModal(false);
+        getProduct();
+      })
+      .catch(console.log);
+  };
+
   return {
     handleOpenModal,
     handleChangeProducto,
@@ -45,5 +101,10 @@ export const ProductoBusiness = () => {
     handleSetProductoCurrent,
     openEdit,
     handleDeleteModal,
+    deletePerson,
+    editPerson,
+    createPerson,
+    handleClickDelete,
+    getProduct,
   };
 };

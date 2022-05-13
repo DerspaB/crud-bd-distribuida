@@ -8,6 +8,10 @@ export const productoAction = () => {
     type: "setProductoCurrent",
     payload: value,
   });
+  const setRows = (value) => ({
+    type: "setRows",
+    payload: value,
+  });
 
-  return { setOpenModal, setProductoCurrent, setDeleteModal };
+  return { setOpenModal, setProductoCurrent, setDeleteModal, setRows };
 };

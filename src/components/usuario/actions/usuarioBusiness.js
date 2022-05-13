@@ -39,14 +39,14 @@ export const UsuarioBusiness = () => {
 
   const getUsers = () => {
     axios
-      .get("http://25.9.114.46:8080/api/users/")
+      .get("http://localhost:8080/api/users/")
       .then((resp) => handleSetRows(resp.data.users))
       .catch((error) => console.log(error));
   };
 
   const createUser = () => {
     axios
-      .post("http://25.9.114.46:8080/api/users/", {
+      .post("http://localhost:8080/api/users/", {
         idPerson: state.usuarioCurrent.idPerson,
         nickname: state.usuarioCurrent.nickname,
         password: state.usuarioCurrent.password,
@@ -60,7 +60,7 @@ export const UsuarioBusiness = () => {
   };
   const editUser = () => {
     axios
-      .put(`http://25.9.114.46:8080/api/users/${state.usuarioCurrent._id}`, {
+      .put(`http://localhost:8080/api/users/${state.usuarioCurrent._id}`, {
         idPerson: state.usuarioCurrent.idPerson,
         nickname: state.usuarioCurrent.nickname,
         status: state.usuarioCurrent.status,
@@ -73,7 +73,7 @@ export const UsuarioBusiness = () => {
   };
   const deleteUser = () => {
     axios
-      .delete(`http://25.9.114.46:8080/api/users/${state.usuarioCurrent._id}`)
+      .delete(`http://localhost:8080/api/users/${state.usuarioCurrent._id}`)
       .then(() => {
         handleDeleteModal(false);
         getUsers();

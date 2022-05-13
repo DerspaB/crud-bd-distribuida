@@ -47,7 +47,7 @@ export const PersonaBusiness = () => {
     dispatch(
       setPersonaCurrent({
         ...state.personaCurrent,
-        id,
+        _id: id,
       })
     );
     handleDeleteModal(true);
@@ -55,18 +55,18 @@ export const PersonaBusiness = () => {
 
   const getPerson = () => {
     axios
-      .get("http://25.9.114.46:8080/api/persons")
+      .get("http://localhost:8080/api/persons")
       .then((resp) => handleSetRows(resp.data.persons))
       .catch((error) => console.log(error));
   };
 
   const createPerson = () => {
     axios
-      .post("http://25.9.114.46:8080/api/persons", {
-        name: "Jorgeeee",
-        lastname: "Parradoooo",
-        email: "jparrado@hola.com",
-        phone: "212121",
+      .post("http://localhost:8080/api/persons", {
+        name: state.personaCurrent.name,
+        lastname: state.personaCurrent.lastname,
+        email: state.personaCurrent.email,
+        phone: state.personaCurrent.phone,
       })
       .then(() => {
         handleOpenModal(false);
@@ -76,7 +76,7 @@ export const PersonaBusiness = () => {
   };
   const editPerson = () => {
     axios
-      .put(`http://25.9.114.46:8080/api/persons/${state.personaCurrent.id}`, {
+      .put(`http://localhost:8080/api/persons/${state.personaCurrent._id}`, {
         name: state.personaCurrent.name,
         lastname: state.personaCurrent.lastname,
         email: state.personaCurrent.email,
@@ -90,7 +90,7 @@ export const PersonaBusiness = () => {
   };
   const deletePerson = () => {
     axios
-      .delete(`http://25.9.114.46:8080/api/persons/${state.personaCurrent.id}`)
+      .delete(`http://localhost:8080/api/persons/${state.personaCurrent._id}`)
       .then(() => {
         handleDeleteModal(false);
         getPerson();

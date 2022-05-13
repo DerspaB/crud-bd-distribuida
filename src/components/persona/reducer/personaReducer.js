@@ -2,13 +2,11 @@ export const personaInitialState = {
   isModalOpen: false,
   isDeleteModal: false,
   personaCurrent: {
-    id: "",
+    _id: "",
     name: "",
     lastname: "",
     email: "",
     phone: "",
-    createdAt: "",
-    updatedAt: "",
   },
   rows: [],
 };

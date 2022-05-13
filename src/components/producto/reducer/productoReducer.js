@@ -1,7 +1,8 @@
 export const productoInitialState = {
   isModalOpen: false,
   isDeleteModal: false,
-  productoCurrent: { id: "", nombreProducto: "", categoria: "", precio: "" },
+  productoCurrent: { _id: "", nombreProducto: "", categoria: "", precio: "" },
+  rows: [],
 };
 
 export const productoReducer = (state, action) => {
@@ -20,6 +21,11 @@ export const productoReducer = (state, action) => {
       return {
         ...state,
         productoCurrent: action.payload,
+      };
+    case "setRows":
+      return {
+        ...state,
+        rows: action.payload,
       };
     default:
       return state;
