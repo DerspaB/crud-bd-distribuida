@@ -24,7 +24,7 @@ const style = {
 export function ProductoModal() {
     const { state } = useProducto()
     const { productoCurrent, isModalOpen } = state
-    const { handleOpenModal, handleChangeProducto } = ProductoBusiness()
+    const { handleOpenModal, handleChangeProducto, createProduct, editProduct} = ProductoBusiness()
 
     return (
         <Modal
@@ -33,7 +33,7 @@ export function ProductoModal() {
         >
             <Box sx={style}>
                 <Typography style={{ marginBottom: '30px', marginTop: '10px' }} id="modal-modal-title" variant="h4" component="h2">
-                    {productoCurrent.id === "" ? "Agregar Producto" : "Editar Producto"}
+                    {productoCurrent._id === "" ? "Agregar Producto" : "Editar Producto"}
                 </Typography>
                 <Grid container spacing={3}>
 
@@ -69,7 +69,7 @@ export function ProductoModal() {
                     </Grid>
                 </Grid>
 
-                <Button style={{ marginTop: '20px', background: '#3dbc07' }} variant='contained'>Guardar</Button>
+                <Button style={{ marginTop: '20px', background: '#3dbc07' }} onClick={productoCurrent._id === "" ? createProduct : editProduct} variant='contained'>Guardar</Button>
             </Box>
         </Modal>
     );

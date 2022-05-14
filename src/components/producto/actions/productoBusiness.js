@@ -13,7 +13,7 @@ export const ProductoBusiness = () => {
   const handleCreateOpenModal = () => {
     dispatch(
       setProductoCurrent({
-        id: "",
+        _id: "",
         nombreProducto: "",
         categoria: "",
         precio: "",
@@ -58,7 +58,7 @@ export const ProductoBusiness = () => {
       .catch((error) => console.log(error));
   };
 
-  const createPerson = () => {
+  const createProduct = () => {
     axios
       .post("http://localhost:8080/api/products", {
         nombreProducto: state.productoCurrent.nombreProducto,
@@ -71,7 +71,7 @@ export const ProductoBusiness = () => {
       })
       .catch(console.log);
   };
-  const editPerson = () => {
+  const editProduct = () => {
     axios
       .put(`http://localhost:8080/api/products/${state.productoCurrent._id}`, {
         nombreProducto: state.productoCurrent.nombreProducto,
@@ -84,7 +84,7 @@ export const ProductoBusiness = () => {
       })
       .catch(console.log);
   };
-  const deletePerson = () => {
+  const deleteProduct = () => {
     axios
       .delete(`http://localhost:8080/api/products/${state.productoCurrent._id}`)
       .then(() => {
@@ -101,9 +101,9 @@ export const ProductoBusiness = () => {
     handleSetProductoCurrent,
     openEdit,
     handleDeleteModal,
-    deletePerson,
-    editPerson,
-    createPerson,
+    deleteProduct,
+    editProduct,
+    createProduct,
     handleClickDelete,
     getProduct,
   };

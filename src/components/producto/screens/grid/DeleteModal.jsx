@@ -23,7 +23,7 @@ const style = {
 
 export function DeleteModal() {
     const { state } = useProducto()
-    const { handleDeleteModal } = ProductoBusiness()
+    const { handleDeleteModal, deleteProduct } = ProductoBusiness()
 
     return (
         <Modal
@@ -40,7 +40,7 @@ export function DeleteModal() {
                         <Button fullWidth onClick={() => handleDeleteModal(false)} style={{ marginTop: '20px', background: 'red' }} variant='contained'>Cancelar</Button>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <Button fullWidth style={{ marginTop: '20px', background: '#3dbc07' }} variant='contained'>Aceptar</Button>
+                        <Button fullWidth onClick={deleteProduct} style={{ marginTop: '20px', background: '#3dbc07' }} variant='contained'>Aceptar</Button>
                     </Grid>
                 </Grid>
 
